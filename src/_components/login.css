@@ -269,10 +269,12 @@ body {
     min-height: auto;
     order: 2;
     display: none;
+    border-radius: 10px;
   }
 
   .loginForm {
     padding: 5rem 0;
+    border-radius: 10px;
   }
 
   .loginInfos {
