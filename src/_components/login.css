@@ -1,0 +1,93 @@
+:root {
+  --bg-color: #000;
+  --txtcolor: #212121;
+  --txtbg: #fff;
+}
+
+.loginSection {
+  -webkit-box-shadow: 0px 0px 18px 3px rgb(129, 129, 129);
+  -moz-box-shadow: 0px 0px 18px 3px rgb(129, 129, 129);
+  box-shadow: 0px 0px 18px 3px rgb(129, 129, 129);
+}
+
+.loginContent {
+  display: flex;
+  flex-direction: row;
+}
+
+.loginLead {
+  color: var(--txtbg);
+  background: var(--bg-color);
+  padding: 13rem 3rem;
+}
+
+.loginForm {
+  background-color: #fff;
+  padding: 10rem 0;
+}
+
+.loginInfos {
+  display: flex;
+  flex-direction: column;
+  padding: 0 8rem;
+  gap: 10px;
+}
+
+.formControl {
+  position: relative;
+  border: 0.5px solid #e2e2e2;
+  border-radius: 2px;
+  width: 100%;
+}
+
+.formControl:focus {
+  border: #6b6b6b;
+}
+
+.formControl > input {
+  border: none;
+  padding: 1.9rem 8rem .6rem 1.3rem;
+}
+
+.formControl.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 8px;
+  background-color: #000;
+}
+
+.formControl label {
+  position: absolute;
+}
+
+.formControl label {
+  position: absolute;
+  top: 50%;
+  left: 1.3rem;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #c5c5c5;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+.formControl > label:focus {
+  border: none;
+}
+
+.btnSign {
+  cursor: pointer;
+  border: none;
+  padding: 0.6rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.formControl input:focus ~ label,
+.formControl input:valid ~ label {
+  top: 33%;
+  background-color: #fff;
+
+}
