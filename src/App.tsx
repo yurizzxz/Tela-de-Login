@@ -5,9 +5,9 @@ import LoginPage from "./_components/login";
 function App() {
   return (
     <>
-      <body>
+    
         <LoginPage></LoginPage>
-      </body>
+    
     </>
   );
 }

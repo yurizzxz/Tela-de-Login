@@ -15,19 +15,26 @@ a {
 }
 
 body {
-  background-color: var(--bgcolor);
-  min-width: 320px;
+  padding: 0;
+  background-color: #cacaca;
+  overflow: hidden;
+  min-width: 380px;
   min-height: 96dvh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  margin: 0 auto;
+  justify-content: center; 
   transition: background-color 0.3s ease-in-out;
 }
 
+#root {
+  margin: 0;
+  padding: 0;
+}
+
 .loginSection {
-  -webkit-box-shadow: 0px 0px 18px 3px rgb(129, 129, 129);
-  -moz-box-shadow: 0px 0px 18px 3px rgb(129, 129, 129);
-  box-shadow: 0px 0px 18px 3px rgb(129, 129, 129);
+  flex-wrap: wrap;
+  padding: 10px;
 }
 
 .loginContent {
@@ -42,24 +49,14 @@ body {
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  padding: 8rem 13rem 10rem 4rem;
+  padding: 4rem 13rem 6rem 4rem;
   justify-content: space-between;
   height: 100%;
-  gap: 5rem;
+  min-height: 30rem; 
   position: relative;
   order: 1;
 }
 
-.loginLead::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 1;
-  z-index: 1;
-}
 
 .loginText h1 {
   font-size: 4rem;
@@ -67,11 +64,17 @@ body {
   line-height: 4rem;
   color: #fff;
   font-weight: 500;
+  padding-bottom: -10rem;
 }
 
 .loginText h1 strong {
   display: block;
   font-family: "Archivo Black", sans-serif;
+}
+
+.loginText p {
+  white-space: pre-line;
+  margin-bottom: -8px;
 }
 
 .loginForm {
@@ -96,23 +99,23 @@ body {
 
 .formControl {
   position: relative;
-  border: 0.5px solid var(--border);
   border-radius: 2px;
-  width: 100%;
   background-color: var(--formbg);
   transition: border-color 0.3s ease;
 }
 
-.formControl:focus-within {
+.formControl > input:focus-within {
   border-color: var(--cor);
 }
 
 .formControl > input {
-  border: none;
-  padding: 1.9rem 6rem 0.7rem 1.3rem;
+  border: 0.5px solid var(--border);
+  padding: 1.7rem 4rem 0.6rem 1.2rem;
   background-color: var(--formbg);
   color: var(--txt);
   outline: none;
+  width: 13rem;
+
 }
 
 .formControl.active::before {
@@ -138,7 +141,21 @@ body {
 .formControl input:focus ~ label,
 .formControl input:valid ~ label {
   top: 33%;
-  background-color: var(--formbg);
+  font-size: 10px;
+}
+
+.formControl i {
+  cursor: pointer;
+  position: absolute;
+  top: 38%;
+  color: var(--cor);
+  font-size: .95rem;
+  right: 1rem;
+}
+
+.errorMessage {
+  font-size: 12px;
+  color: rgba(255, 21, 21, 0.76);
 }
 
 /*form footer*/
@@ -203,6 +220,112 @@ body {
   color: var(--txt);
 }
 
+
+@media (max-width: 1100px) {
+  .loginLead {
+    padding: 5.5rem 5rem 5rem 4rem;
+  }
+  .loginInfos {
+    padding: 0 3.5rem;
+  }
+}
+
+@media (max-width: 950px) {
+  .loginLead {
+    padding: 5.5rem 3rem 5rem 3.5rem;
+  }
+  .loginInfos {
+    padding: 0 3rem;
+  }
+}
+
+@media (max-width: 950px) {
+  .loginLead {
+    padding: 5.5rem 3rem 5rem 3rem;
+  }
+  .loginInfos {
+    padding: 0 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .loginContent {
+    flex-direction: column;
+  }
+
+  .loginLead {
+    min-height: auto;
+    order: 2;
+    display: none;
+  }
+
+  .loginForm {
+    padding: 5rem 0;
+  }
+
+  .loginInfos {
+    padding: 0 3.7rem;
+  }
+
+  .formControl > input {
+    width: 20rem;
+  }
+  
+  .btnSign {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .formControl > input {
+    width: 16rem;
+  }
+  
+}
+
+@media (max-width: 480px) {
+  .formControl > input {
+    width: 13rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .loginInfos {
+    padding: 0 2.5rem;
+  }
+  .formControl > input {
+    width: 15.5rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .loginInfos {
+    padding: 0 2.3rem;
+  }
+  .formControl > input {
+    width: 14rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .loginInfos {
+    padding: 0 1.8rem;
+  }
+  .formControl > input {
+    width: 14rem;
+  }
+}
+
+@media (max-width: 385px) {
+  .loginInfos {
+    padding: 0 1.8rem;
+  }
+  .formControl > input {
+    width: 13.5rem;
+  }
+}
+
+
 /*button*/
 
 .btnSign {
@@ -239,4 +362,66 @@ body {
 
 .buttonLayout span {
   color: var(--cor);
+}
+
+
+/*reset password*/
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.modalContent {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 1.5rem;
+}
+
+.modalFooter input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: .5px solid var(--border);
+  outline: none;
+}
+
+.modalFooter > input:focus-within {
+  border: .5px solid var(--cor);
+  
+}
+
+.modalFooter button {
+  padding: 15px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: 0.3s ease-in-out;
+  background-color: var(--cor);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.modalFooter button:hover {
+  transition: 0.3s ease-in-out;
+  background-color: #7000cc;
 }
