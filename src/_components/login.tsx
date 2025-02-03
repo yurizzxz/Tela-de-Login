@@ -3,24 +3,22 @@ import "./login.css";
 import logo from "../assets/logopng.png";
 import logobranco from "../assets/logobranco.png";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import LoginForm from "./LogIn/index";
+import SignUpForm from "./SignUp/index";
+
 
 const LoginPage = () => {
-  const [activeEmail, setActiveEmail] = useState(false);
-  const [activePassword, setActivePassword] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleFocusEmail = () => setActiveEmail(true);
-  const handleBlurEmail = () => setActiveEmail(false);
+  const [activeForm, setActiveForm] = useState<"login" | "register">("login");
 
-  const handleFocusPassword = () => setActivePassword(true);
-  const handleBlurPassword = () => setActivePassword(false);
-
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     let valid = true;
 
@@ -39,135 +37,109 @@ const LoginPage = () => {
     }
   };
 
-  const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
 
   return (
     <>
-    <section className="loginSection" aria-labelledby="login-header">
-      <div className="loginContent">
-        <aside className="loginLead">
-          <div className="loginLogo">
-            <img src={logobranco} width={140} alt="Logo DayByDay" />
-          </div>
-          <div className="loginText">
-            <h1 id="login-header">
-              Olá, <strong>bem-vindo!</strong>
-            </h1>
-            <p>Estamos animados por tê-lo conosco novamente.</p>
-            <p>Faça login para continuar sua incrível jornada.</p>
-            <p>Pronto para começar?</p>
-          </div>
-        </aside>
-        <main className="loginForm" role="form">
-          <div className="loginInfos">
-            <header className="formHead">
-              <img src={logo} width={120} alt="Logo da plataforma" />
-            </header>
+      <section className="loginSection" aria-labelledby="login-header">
+        <div className="loginContent">
+          <aside className="loginLead">
+            <div className="loginLogo">
+              <img src={logobranco} width={140} alt="Logo DayByDay" />
+            </div>
+            <div className="loginText">
+              <h1 id="login-header">
+                Seja muito <strong>bem-vindo!</strong>
+              </h1>
+              <p>Estamos animados por tê-lo conosco.</p>
+              <p>Faça login para continuar sua incrível jornada.</p>
+              <p>Pronto para começar?</p>
+            </div>
+          </aside>
+          <main className="loginForm" role="form">
+            <div className="loginInfos">
+              <header className="formHead">
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <img src={logo} width={120} alt="Logo da plataforma" />
+                </div>
 
-            <div className="formControlctner">
-              <div className={`formControl ${activeEmail ? "active" : ""}`}>
-                <input
-                  type="email"
-                  id="email"
-                  value={email}
-                  required
-                  onFocus={handleFocusEmail}
-                  onBlur={handleBlurEmail}
-                  spellCheck="false"
-                  aria-labelledby="email-label"
-                  aria-required="true"
-                  onChange={(e) => setEmail(e.target.value)}
+                <div className="buttonContainer">
+                  <button
+                    className={activeForm === "login" ? "active" : ""}
+                    onClick={() => setActiveForm("login")}
+                  >
+                    Entrar
+                  </button>
+                  <button
+                    className={activeForm === "register" ? "active" : ""}
+                    onClick={() => setActiveForm("register")}
+                  >
+                    Criar Conta
+                  </button>
+                </div>
+              </header>
+
+              {activeForm === "login" ? (
+                /* LOGIN */
+                <LoginForm
+                  handleSubmit={handleSubmit}
+                  email={email}
+                  setEmail={setEmail}
+                  password={password}
+                  setPassword={setPassword}
+                  showPassword={showPassword}
+                  setShowPassword={setShowPassword}
+                  emailError={emailError}
+                  passwordError={passwordError}
                 />
-                <label htmlFor="email" id="email-label">
-                  Insira seu E-mail
-                </label>
-              </div>
-            </div>
-            {emailError && <span className="errorMessage">{emailError}</span>}
-
-            <div className="formControlctner">
-              <div className={`formControl ${activePassword ? "active" : ""}`}>
-                <input
-                  type={showPassword ? "text" : "password"}
-                  id="password"
-                  value={password}
-                  required
-                  onFocus={handleFocusPassword}
-                  onBlur={handleBlurPassword}
-                  minLength={6}
-                  aria-labelledby="password-label"
-                  aria-required="true"
-                  onChange={(e) => setPassword(e.target.value)}
+              ) : (
+                /* REGISTRO */
+                <SignUpForm
+                  handleSubmit={handleSubmit}
+                  name={name}
+                  setName={setName}
+                  email={email}
+                  setEmail={setEmail}
+                  password={password}
+                  setPassword={setPassword}
+                  showPassword={showPassword}
+                  setShowPassword={setShowPassword}
+                  emailError={emailError}
+                  passwordError={passwordError}
                 />
-                <label htmlFor="password" id="password-label">
-                  Senha
-                </label>
-                <i
-                  onClick={() => setShowPassword(!showPassword)}
-                  className={`fas ${showPassword ? "fa-eye-slash" : "fa-eye"}`}
-                />
-              </div>
+              )}
             </div>
-            {passwordError && (
-              <span className="errorMessage">{passwordError}</span>
-            )}
-
-            <footer className="formFooter">
-              <div className="checkbox">
-                <input
-                  type="checkbox"
-                  id="checkboxRemember"
-                  aria-labelledby="remember-label"
-                />
-                <label htmlFor="checkboxRemember" id="remember-label">
-                  Lembrar de mim
-                </label>
-              </div>
-              <a
-                href="#"
-                onClick={handleOpenModal}
-                aria-label="Esqueceu sua senha?"
-              >
-                Esqueceu a Senha?
-              </a>
-            </footer>
-
-            <div className="buttonLayout">
-              <button
-                type="submit"
-                className="btnSign"
-                aria-label="Enviar formulário de login"
-                onClick={handleSubmit}
-              >
-                Login
-              </button>
-              <a href="#" aria-label="Criar uma nova conta">
-                Não tem uma conta? <span>Cadastre-se</span>
-              </a>
-            </div>
-          </div>
-        </main>
-      </div>
-
-      {isModalOpen && (
-        <div className="modal">
-          <div className="modalContent">
-            <div className="modalHead">
-              <h2>Recuperação de Senha</h2>
-              <p>Digite seu e-mail para recuperar a senha.</p>
-            </div>
-            <div className="modalFooter">
-              <input type="email" placeholder="E-mail" />
-              <button onClick={handleCloseModal}>Fechar</button>
-            </div>
-            <div className="image">
-              <img src={logo} width={100} alt="Logo DayByDay" />
-            </div>
-          </div>
+          </main>
         </div>
-      )}
-    </section>
+
+        {isModalOpen && (
+          <div className="modal">
+            <div className="modalContent">
+              <div className="modalHead">
+                <h2>Recuperação de Senha</h2>
+                <span
+                  style={{ cursor: "pointer", fontSize: "1.2rem" }}
+                  onClick={handleCloseModal}
+                >
+                  <i className="fas fa-times" />
+                </span>
+              </div>
+              <div>
+                <p>Digite seu e-mail para recuperar a senha.</p>
+              </div>
+              <div className="modalFooter">
+                <input type="email" placeholder="E-mail" />
+                <button className="btnSign" onClick={handleCloseModal}>
+                  Enviar email
+                </button>
+                <div className="image">
+                  <img src={logo} width={100} alt="Logo DayByDay" />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </section>
     </>
   );
 };

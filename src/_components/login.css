@@ -4,9 +4,9 @@
 :root {
   --bgcolor: #fff;
   --txt: #212121;
-  --formbg: #ffffff;
+  --formbg: #fcfcfc;
   --txtcor: #212121;
-  --border: #eeeeee;
+  --border: #e2e2e2;
   --cor: #8400ff;
 }
 
@@ -58,7 +58,6 @@ body {
   border-radius: 0 10px 10px 0;
 }
 
-
 .loginText h1 {
   font-size: 4rem;
   font-family: "Archivo", serif;
@@ -79,9 +78,11 @@ body {
 }
 
 .loginForm {
-  background-color: var(--formbg);
-  padding: 10rem 0;
+  background-color: var(--bgcolor);
   border-radius: 10px 0 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .loginInfos {
@@ -91,12 +92,44 @@ body {
   gap: 10px;
 }
 
+
+
 /*inputs*/
 
 .formHead {
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
+  flex-direction: column;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.buttonContainer button {
+  border: 0.5px solid var(--border);
+  border-radius: 5px;
+  padding: .8rem 2rem;
+  background-color: var(--formbg);
+  color: var(--txt);
+  cursor: pointer;
+  transition: .3s ease-in-out;
+  font-size: 14px;  
+  width: 100%;
+}
+
+.buttonContainer button.active {
+  border-color: var(--cor);
+}
+
+.buttonContainer button:hover {
+  border-color: var(--cor);
+  transition: .3s ease-in-out;
 }
 
 .formControl {
@@ -116,7 +149,7 @@ body {
   background-color: var(--formbg);
   color: var(--txt);
   outline: none;
-  border-radius: 2px;
+  border-radius: 5px;
   width: 13rem;
   transition: .3s ease-in-out;
 }
@@ -133,6 +166,8 @@ body {
   height: 100%;
   width: 8px;
   background-color: var(--cor);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .formControl label {
@@ -398,13 +433,19 @@ body {
   flex-direction: column;
 }
 
+.modalHead {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .modalContent {
   background-color: #fff;
   padding: 25px;
   border-radius: 8px;
   width: 100%;
-  max-width: 300px;
-  text-align: center;
+  max-width: 30rem;
   display: flex;
   flex-direction: column;
 }
@@ -413,19 +454,23 @@ body {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  margin-bottom: 1.5rem;
 }
 
 .modalFooter input {
-  padding: 10px;
+  padding: 1rem .9rem ;
   margin-bottom: 10px;
   border: .5px solid var(--border);
   outline: none;
+  border-radius: .5rem;
 }
 
 .modalFooter > input:focus-within {
   border: .5px solid var(--cor);
-  
+}
+
+.modalFooter{
+  display: flex;
+  gap: 10px;
 }
 
 .modalFooter button {
@@ -437,9 +482,41 @@ body {
   color: #fff;
   border: none;
   cursor: pointer;
+  margin-bottom: .7rem;
 }
 
 .modalFooter button:hover {
   transition: 0.3s ease-in-out;
   background-color: #7000cc;
+}
+
+.modalFooter .image{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+@media (max-width: 768px) {
+  .modalContent {
+    max-width: 25rem;
+  }
+}
+@media (max-width: 500px) {
+  .modalContent {
+    max-width: 22rem;
+  }
+}
+@media (max-width: 390px) {
+  .modalContent {
+    max-width: 20rem;
+  }
+
+  .modalContent p {
+    font-size: .9rem;
+  }
+
+  .modalContent h2 {
+    font-size: 1.3rem;
+  }
 }
