@@ -36,6 +36,7 @@ const LoginPage = () => {
     }
   };
 
+  const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
 
   return (
@@ -94,6 +95,7 @@ const LoginPage = () => {
                     setShowPassword={setShowPassword}
                     emailError={emailError}
                     passwordError={passwordError}
+                    onClick={handleOpenModal}
                   />
                 </>
               ) : (

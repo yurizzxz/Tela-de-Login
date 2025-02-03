@@ -11,9 +11,10 @@ interface LoginFormProps {
     setShowPassword: (showPassword: boolean) => void;
     emailError: string;
     passwordError: string;
+    onClick: () => void
 }
 
-const LoginForm = ({ handleSubmit, email, setEmail, password, setPassword, showPassword, setShowPassword, emailError, passwordError }: LoginFormProps) => {
+const LoginForm = ({ handleSubmit, email, setEmail, password, setPassword, showPassword, setShowPassword, emailError, passwordError, onClick }: LoginFormProps) => {
   const [activeEmail, setActiveEmail] = useState(false);
   const [activePassword, setActivePassword] = useState(false);
 
@@ -77,7 +78,7 @@ const LoginForm = ({ handleSubmit, email, setEmail, password, setPassword, showP
             Lembrar de mim
           </label>
         </div>
-        <a href="#" onClick={() => alert("Esqueci a senha")}>
+        <a href="#" onClick={onClick}>
           Esqueceu a Senha?
         </a>
       </footer>
