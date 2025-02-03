@@ -99,7 +99,7 @@ body {
 .formHead {
   display: flex;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
   flex-direction: column;
 }
 
@@ -121,10 +121,14 @@ body {
   transition: .3s ease-in-out;
   font-size: 14px;  
   width: 100%;
+  font-family: "Archivo", serif;
 }
 
 .buttonContainer button.active {
-  border-color: var(--cor);
+  background-color: var(--cor);
+  color: #fff;
+  transition: .3s  ease-in-out;
+  font-weight: 700;
 }
 
 .buttonContainer button:hover {
@@ -152,6 +156,7 @@ body {
   border-radius: 5px;
   width: 13rem;
   transition: .3s ease-in-out;
+  margin-bottom: 5px;
 }
 
 .formControl > input:hover {

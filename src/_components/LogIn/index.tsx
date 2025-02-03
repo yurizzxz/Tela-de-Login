@@ -70,7 +70,7 @@ const LoginForm = ({ handleSubmit, email, setEmail, password, setPassword, showP
       </div>
       {passwordError && <span className="errorMessage">{passwordError}</span>}
 
-      <footer className="formFooter">
+      <footer className="formFooter" style={{ marginTop: ".5rem" }}>
         <div className="checkbox">
           <input type="checkbox" id="checkboxRemember" aria-labelledby="remember-label" />
           <label htmlFor="checkboxRemember" id="remember-label">
@@ -91,9 +91,6 @@ const LoginForm = ({ handleSubmit, email, setEmail, password, setPassword, showP
         >
           Login
         </button>
-        <a href="#" aria-label="Criar uma nova conta">
-          Não tem uma conta? <span>Cadastre-se</span>
-        </a>
       </div>
     </div>
   );

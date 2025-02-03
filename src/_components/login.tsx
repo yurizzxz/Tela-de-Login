@@ -6,7 +6,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import LoginForm from "./LogIn/index";
 import SignUpForm from "./SignUp/index";
 
-
 const LoginPage = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -81,32 +80,42 @@ const LoginPage = () => {
 
               {activeForm === "login" ? (
                 /* LOGIN */
-                <LoginForm
-                  handleSubmit={handleSubmit}
-                  email={email}
-                  setEmail={setEmail}
-                  password={password}
-                  setPassword={setPassword}
-                  showPassword={showPassword}
-                  setShowPassword={setShowPassword}
-                  emailError={emailError}
-                  passwordError={passwordError}
-                />
+                <>
+                  <h2 style={{ marginBottom: "0rem", marginTop: "0rem" }}>
+                    Olá novamente!
+                  </h2>
+                  <LoginForm
+                    handleSubmit={handleSubmit}
+                    email={email}
+                    setEmail={setEmail}
+                    password={password}
+                    setPassword={setPassword}
+                    showPassword={showPassword}
+                    setShowPassword={setShowPassword}
+                    emailError={emailError}
+                    passwordError={passwordError}
+                  />
+                </>
               ) : (
                 /* REGISTRO */
-                <SignUpForm
-                  handleSubmit={handleSubmit}
-                  name={name}
-                  setName={setName}
-                  email={email}
-                  setEmail={setEmail}
-                  password={password}
-                  setPassword={setPassword}
-                  showPassword={showPassword}
-                  setShowPassword={setShowPassword}
-                  emailError={emailError}
-                  passwordError={passwordError}
-                />
+                <>
+                  <h2 style={{ marginBottom: "0rem", marginTop: "0rem" }}>
+                    Crie sua conta!
+                  </h2>
+                  <SignUpForm
+                    handleSubmit={handleSubmit}
+                    name={name}
+                    setName={setName}
+                    email={email}
+                    setEmail={setEmail}
+                    password={password}
+                    setPassword={setPassword}
+                    showPassword={showPassword}
+                    setShowPassword={setShowPassword}
+                    emailError={emailError}
+                    passwordError={passwordError}
+                  />
+                </>
               )}
             </div>
           </main>

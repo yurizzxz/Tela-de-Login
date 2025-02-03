@@ -29,7 +29,9 @@ const SignUpForm = ({ handleSubmit, name, setName, email, setEmail, password, se
 
   return (
     <div>
+      
       <div className="formControlctner">
+        
         <div className={`formControl ${activeName ? "active" : ""}`}>
           <input
             type="text"
@@ -103,9 +105,6 @@ const SignUpForm = ({ handleSubmit, name, setName, email, setEmail, password, se
         >
           Registrar
         </button>
-        <a href="#" aria-label="Criar uma nova conta">
-          Já tem uma conta? <span>Entrar</span>
-        </a>
       </div>
     </div>
   );
